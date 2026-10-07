@@ -1,0 +1,126 @@
+{
+  "entities": {
+    "Service": {
+      "title": "Service",
+      "description": "Software services offered by Arilsync Technology",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 120 },
+        "slug": { "type": "string", "maxLength": 80 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "icon": { "type": "string", "maxLength": 50 },
+        "deliverables": { "type": "array", "description": "Key service deliverables" },
+        "techStack": { "type": "array", "description": "Technologies used" },
+        "order": { "type": "number" }
+      },
+      "required": ["title", "slug", "description", "icon"]
+    },
+    "PortfolioProject": {
+      "title": "PortfolioProject",
+      "description": "Featured and completed client engineering projects",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 150 },
+        "description": { "type": "string", "maxLength": 1200 },
+        "imageUrl": { "type": "string", "maxLength": 500 },
+        "category": { "type": "string", "maxLength": 60 },
+        "tags": { "type": "array", "description": "Project technology tags" },
+        "link": { "type": "string", "maxLength": 500 },
+        "client": { "type": "string", "maxLength": 100 },
+        "metric": { "type": "string", "maxLength": 100 },
+        "challenge": { "type": "string", "maxLength": 1000 },
+        "solution": { "type": "string", "maxLength": 1000 },
+        "order": { "type": "number" }
+      },
+      "required": ["title", "description", "imageUrl", "category", "tags"]
+    },
+    "PricingPlan": {
+      "title": "PricingPlan",
+      "description": "Productized development and retainer packages",
+      "type": "object",
+      "properties": {
+        "planName": { "type": "string", "maxLength": 100 },
+        "price": { "type": "string", "maxLength": 60 },
+        "period": { "type": "string", "maxLength": 30 },
+        "description": { "type": "string", "maxLength": 300 },
+        "features": { "type": "array", "description": "Included deliverables and terms" },
+        "highlighted": { "type": "boolean" },
+        "badge": { "type": "string", "maxLength": 50 },
+        "order": { "type": "number" }
+      },
+      "required": ["planName", "price", "features", "highlighted"]
+    },
+    "Testimonial": {
+      "title": "Testimonial",
+      "description": "Verified client reviews and endorsements",
+      "type": "object",
+      "properties": {
+        "clientName": { "type": "string", "maxLength": 100 },
+        "company": { "type": "string", "maxLength": 100 },
+        "role": { "type": "string", "maxLength": 100 },
+        "quote": { "type": "string", "maxLength": 800 },
+        "imageUrl": { "type": "string", "maxLength": 500 },
+        "metric": { "type": "string", "maxLength": 80 },
+        "order": { "type": "number" }
+      },
+      "required": ["clientName", "company", "role", "quote"]
+    },
+    "CompanySettings": {
+      "title": "CompanySettings",
+      "description": "Global website contact information and corporate links",
+      "type": "object",
+      "properties": {
+        "companyName": { "type": "string", "maxLength": 100 },
+        "email": { "type": "string", "maxLength": 120 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "address": { "type": "string", "maxLength": 250 },
+        "socialLinks": { "type": "object" },
+        "tagline": { "type": "string", "maxLength": 300 }
+      },
+      "required": ["email", "companyName"]
+    },
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "Client contact form lead submissions",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 100 },
+        "email": { "type": "string", "maxLength": 120 },
+        "company": { "type": "string", "maxLength": 120 },
+        "service": { "type": "string", "maxLength": 80 },
+        "budget": { "type": "string", "maxLength": 60 },
+        "timeline": { "type": "string", "maxLength": 60 },
+        "message": { "type": "string", "maxLength": 2000 },
+        "createdAt": { "type": "string", "maxLength": 60 },
+        "status": { "type": "string", "maxLength": 40 }
+      },
+      "required": ["name", "email", "message"]
+    }
+  },
+  "firestore": {
+    "/services/{serviceId}": {
+      "schema": "Service",
+      "description": "Software house service offerings"
+    },
+    "/portfolio/{projectId}": {
+      "schema": "PortfolioProject",
+      "description": "Case studies and portfolio items"
+    },
+    "/pricing/{planId}": {
+      "schema": "PricingPlan",
+      "description": "Pricing tiers and retainer options"
+    },
+    "/testimonials/{testimonialId}": {
+      "schema": "Testimonial",
+      "description": "Client testimonials and reviews"
+    },
+    "/settings/{settingsId}": {
+      "schema": "CompanySettings",
+      "description": "Global company settings and contact information"
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": "Inquiry",
+      "description": "Inbound client contact and project estimate requests"
+    }
+  }
+}
